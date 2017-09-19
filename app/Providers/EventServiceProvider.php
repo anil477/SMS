@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\V1\SendOrderSmsEvent;
+use App\Listeners\V1\SendOrderSmsListener;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -13,9 +15,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
-        ],
+        SendOrderSmsEvent::class  => [
+            SendOrderSmsListener::class
+        ]
     ];
 
     /**

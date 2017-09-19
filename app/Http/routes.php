@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'v1/sms'], function () {
+    Route::post(
+        '/send',
+        ['uses' => '\App\Http\Controllers\V1\SMSController@sendOrderSMS']
+    );
+});
